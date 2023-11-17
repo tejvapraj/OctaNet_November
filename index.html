@@ -3,100 +3,92 @@
 Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
 Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
 -->
-
+<html>
     <head>
-        <title>Tropical World</title>
+        <link rel="stylesheet" href="style.css" type="text/css"/>
+
+        <title>To-Do List</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="style.css">
-         <link rel="stylesheet" href="style.css">
-         <link rel="stylesheet" href="utils.css">
     </head>
     <body>
-        <div class="backgroung"> 
-        <div class="container mx-auto ">
-            <header>
-                <nav class="flex justify-between">
-                     <img class = "logo logoimg" src="logoimg1.jpg" height="40px" width="40px"></img>
-                    <div class="logo flex items-center font-bold">Tropical World</div>
-                    
-                    <div class="navbar flex items-center ">
-                        <div class="menu">  
-                        <a href="#">Home</a>
-                        <a href="#">About</a>
-                        <a href="#">Tour</a>
-                        <a href="#">Booking</a>
-                        </div>
-                         <div class="register">
-                        <a href="#">Register</a>
-                    </div>
-                    </div>
-                   
-                </nav>
-                
-            </header>
-              <main class="min-x-screen">
-                  <section class="section1">
+        <header class="head">
+            <h2>To-Do List</h2>
+        </header>
+        <div class="container">
+            <section class="section1">
+                <input type="text" id="taskInput" placeholder="Enter a new task">
+                <input type="date" id="deadlineInput">
+                <select id="priorityInput">
+                    <option value="low">Low</option>
+                    <option value="medium">Medium</option>
+                    <option value="high">High</option>
+                </select>
+                <input type="text" id="labelInput" placeholder="Enter labels">
+                <button id="addTaskBtn" onclick="addTask()">Add Task</button>
 
-                      <div class="flex">
-                          <div class="topleft justify-center">
-                              <h1 class="my-1 "> Plan your next Tropical Holidays </h1>
-                              <p class="subpar"> Time to Explore</p>
-                          </div>
-                        
-                  </section>
-              
-              <section class="section2">
-                  <div class="boxes flex">
-                  <div class="box bg1">Bali, Indonesia</div> 
-                  <div class="box bg2">Maldives</div>
-                  <div class="box bg3">Hawaii</div>
-                  <br>
-                  </div>
-              </section>
+                <ul id="taskList"></ul>
+                <script>
+                    function addTask() {
+                        var taskInput = document.getElementById('taskInput');
+                        var deadlineInput = document.getElementById('deadlineInput');
+                        var priorityInput = document.getElementById('priorityInput');
+                        var labelInput = document.getElementById('labelInput');
+                        var taskList = document.getElementById('taskList');
 
-              <section class="section3"> 
-                  <div class="bookTrip">
-                      <a href="#">BOOK YOUR TRIPS</a>
-                  </div>
-              </section>
-              
-              </main>
-            <footer class="footer">
-                <section class="sectionA">
-                <div class="contact">
-                    <p> Connect with us on social Accounts</p></div>
-                    <div class="icons flex">
-                    <div class="icon-1"><img src="twitter.png" alt="#" height="40px" width="40px"></img> </div>
-                    <div class="icon-2"><img src="gmail.png" alt="#" height="40px" width="40px"></img> </div>
-                    <div class="icon-2"><img src="facebook.png" alt="#" height="40px" width="40px"></img> </div>
-                    </div>
-                </section>
-                <section class="sectionB">
-                    <div class="lastpart">
-                        <div class="add"> <img src="address.png" alt="#" height="40px" width="40px"></img></div>
-                        <div class="phone"> <img src="Tele.png" alt="#" height="40px" width="40px"></img> </div>
-                        <p class="para1"> 27, 13 Lowe Haven </p>
-                        <br> <br>
-                        <p class="para2"> 111 222 43 72</p>
-                        
-                        
-                    </div>
-               
-               
-                    </div>
-                </section>
-                
-            </footer>
-          
+                        if (taskInput.value.trim() !== '') {
+                            // Create a new list item
+                            var li = document.createElement('li');
+                            li.className = 'taskItem';
+
+                            // Create task description
+                            var taskDescription = document.createElement('span');
+                            taskDescription.innerHTML = taskInput.value;
+                            li.appendChild(taskDescription);
+
+                            // Create deadline
+                            var deadlineSpan = document.createElement('span');
+                            deadlineSpan.innerHTML = ' Deadline: ' + (deadlineInput.value || 'No deadline');
+                            li.appendChild(deadlineSpan);
+
+                            // Create priority
+                            var prioritySpan = document.createElement('span');
+                            prioritySpan.innerHTML = ' Priority: ' + priorityInput.value;
+                            li.appendChild(prioritySpan);
+
+                            // Create labels
+                            var labelSpan = document.createElement('span');
+                            labelSpan.innerHTML = ' Labels: ' + (labelInput.value || 'No labels');
+                            li.appendChild(labelSpan);
+
+                            // Create a delete button
+                            var deleteBtn = document.createElement('button');
+                            deleteBtn.className = 'deleteBtn';
+                            deleteBtn.innerHTML = 'Delete';
+                            deleteBtn.onclick = function () {
+                                deleteTask(this);
+                            };
+                            li.appendChild(deleteBtn);
+
+                            // Append the new task to the task list
+                            taskList.appendChild(li);
+
+                            // Clear the input fields
+                            taskInput.value = '';
+                            deadlineInput.value = '';
+                            priorityInput.value = 'low';
+                            labelInput.value = '';
+                        }
+                    }
+
+                    function deleteTask(btn) {
+                        var taskList = document.getElementById('taskList');
+                        var li = btn.parentNode;
+                        taskList.removeChild(li);
+                    }
+                </script>
+
+            </section>
         </div>
-                      </div>
-     
-        
     </body>
-
-<ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
-<li class="ftco-animate fadeInUp ftco-animated"><a href="#"><span class="icon-twitter"></span></a></li>
-<li class="ftco-animate fadeInUp ftco-animated"><a href="#"><span class="icon-facebook"></span></a></li>
-<li class="ftco-animate fadeInUp ftco-animated"><a href="#"><span class="icon-instagram"></span></a></li>
-</ul>
+</html>
