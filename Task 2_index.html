@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html>
+    <head>
+        <link rel="stylesheet" href="style.css" type="text/css"/>
+
+        <title>To-Do List</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <header class="head">
+            <h2>To-Do List</h2>
+        </header>
+        <div class="container">
+            <section class="section1">
+                <input type="text" id="taskInput" placeholder="Enter a new task">
+                <input type="date" id="deadlineInput">
+                <select id="priorityInput">
+                    <option value="low">Low</option>
+                    <option value="medium">Medium</option>
+                    <option value="high">High</option>
+                </select>
+                <input type="text" id="labelInput" placeholder="Enter labels">
+                <button id="addTaskBtn" onclick="addTask()">Add Task</button>
+
+                <ul id="taskList"></ul>
+                <script>
+                    function addTask() {
+                        var taskInput = document.getElementById('taskInput');
+                        var deadlineInput = document.getElementById('deadlineInput');
+                        var priorityInput = document.getElementById('priorityInput');
+                        var labelInput = document.getElementById('labelInput');
+                        var taskList = document.getElementById('taskList');
+
+                        if (taskInput.value.trim() !== '') {
+                            // Create a new list item
+                            var li = document.createElement('li');
+                            li.className = 'taskItem';
+
+                            // Create task description
+                            var taskDescription = document.createElement('span');
+                            taskDescription.innerHTML = taskInput.value;
+                            li.appendChild(taskDescription);
+
+                            // Create deadline
+                            var deadlineSpan = document.createElement('span');
+                            deadlineSpan.innerHTML = ' Deadline: ' + (deadlineInput.value || 'No deadline');
+                            li.appendChild(deadlineSpan);
+
+                            // Create priority
+                            var prioritySpan = document.createElement('span');
+                            prioritySpan.innerHTML = ' Priority: ' + priorityInput.value;
+                            li.appendChild(prioritySpan);
+
+                            // Create labels
+                            var labelSpan = document.createElement('span');
+                            labelSpan.innerHTML = ' Labels: ' + (labelInput.value || 'No labels');
+                            li.appendChild(labelSpan);
+
+                            // Create a delete button
+                            var deleteBtn = document.createElement('button');
+                            deleteBtn.className = 'deleteBtn';
+                            deleteBtn.innerHTML = 'Delete';
+                            deleteBtn.onclick = function () {
+                                deleteTask(this);
+                            };
+                            li.appendChild(deleteBtn);
+
+                            // Append the new task to the task list
+                            taskList.appendChild(li);
+
+                            // Clear the input fields
+                            taskInput.value = '';
+                            deadlineInput.value = '';
+                            priorityInput.value = 'low';
+                            labelInput.value = '';
+                        }
+                    }
+
+                    function deleteTask(btn) {
+                        var taskList = document.getElementById('taskList');
+                        var li = btn.parentNode;
+                        taskList.removeChild(li);
+                    }
+                </script>
+
+            </section>
+        </div>
+    </body>
+</html>

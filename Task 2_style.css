@@ -1,0 +1,74 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/css.css to edit this template
+*/
+/* 
+    Created on : 17-Nov-2023, 2:32:17 pm
+    Author     : TEJAL VINOD APRAJ
+*/
+
+
+*{
+    margin: 0;
+    padding: 0;
+    background: #ffcccc
+}
+
+.container{
+    max-width: 100vw;
+    max-height: 100vh;
+
+}
+
+.head {
+    padding: 20px;
+    text-align: center;
+    font-size: 30px;
+    font-family: initial;
+}
+
+
+.section1 {
+    padding: 20px;
+    text-align: center;
+    height: 50vh;
+    width: 90vh;
+    font-size: 20px;
+    background: #ffcc00;
+    margin-left: 320px;
+}
+.section1 input{
+    padding-top: 2px;
+    border-radius: 5px;
+    background: #6699ff;
+}
+.section1 select{
+    padding-top: 2px;
+    border-radius: 5px;
+    background: #6699ff;
+}
+.section1 button{
+    padding-top: 2px;
+    border-radius: 5px;
+    background: #6699ff;
+    cursor: pointer;
+}
+.taskItem{
+    display: block;
+    border: 1px solid #ddd;
+    margin: 8px;
+
+    padding: 8px;
+}
+.deleteBtn {
+    background-color: #f44336;
+    color: white;
+    border: none;
+    padding: 6px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 2px 2px;
+    cursor: pointer;
+}
